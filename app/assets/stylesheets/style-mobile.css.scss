@@ -163,7 +163,7 @@
 			top: 10px;
 			width: 50px;
 			height: 40px;
-			background: rgba(150,150,150,0.35) url('/assets/mobileUI-site-nav-opener-bg.svg') 12px 14px no-repeat;
+			background: rgba(150,150,150,0.35) image-url('mobileUI-site-nav-opener-bg.svg') 12px 14px no-repeat;
 			border-radius: 5px;
 		}
 
@@ -179,7 +179,7 @@
 	#navPanel
 	{
 		color: #858484;
-		background-image: url('/assets/bg02.png');
+		background-image: image-url('bg02.png');
 		box-shadow: inset -3px 0px 5px 0px rgba(0,0,0,0.35);
 	}
 
