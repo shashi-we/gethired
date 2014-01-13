@@ -4,7 +4,6 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -33,8 +32,15 @@ group :doc do
 end
 
 #gem "non-stupid-digest-assets"
-gem 'pg', group: :production
+gem 'pg'
 gem 'rails_12factor', group: :production
+
+group :test,:development do
+	gem 'rspec-rails'
+	gem 'debugger'
+end
+
+gem 'rails_admin'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -46,3 +52,6 @@ gem 'rails_12factor', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+gem "devise"
