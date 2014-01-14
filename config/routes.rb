@@ -1,4 +1,5 @@
 Gethired::Application.routes.draw do
+  
   resources :posts
 
   devise_for :users
@@ -9,7 +10,7 @@ Gethired::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get "/blog/" => "welcome#blog" 
-
+  get '/gethired-resumes'=>'templates#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -9,8 +9,9 @@
   <!--[if lte IE 8]><script src="/assets/html5shiv.js"></script><link rel="stylesheet" href="/assets/ie8.css" /><![endif]-->
 </head>
 <body class="homepage">
-
-<%= yield %>
+  <%= render 'layouts/header'%>
+  <%= yield %>
+  <%= render 'layouts/footer'%>
 
 </body>
 </html>
