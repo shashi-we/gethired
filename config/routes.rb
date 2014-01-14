@@ -8,7 +8,7 @@ Gethired::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  match "/blog" => "welcome#blog" 
+  get "/blog" => "welcome#blog" 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
