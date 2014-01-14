@@ -13,7 +13,7 @@
 						<ul class="dates">
 							<% @tweets.each do |tweet| %>
 								<li>
-									<span class="date"><%=tweet.created_at.strftime('%b')%> <strong><%=tweet.created_at.strftime('%m')%></strong></span>
+									<span class="date"><%=tweet.created_at.strftime('%b')%> <strong><%=tweet.created_at.strftime('%d')%></strong></span>
 									<h3><a href="#"><%= tweet.user.screen_name %></a></h3>
 									<p><%= tweet.text %></p>
 								</li>
