@@ -5,4 +5,9 @@ class WelcomeController < ApplicationController
 	def blog
 		redirect_to("/blog/")
 	end
+
+	def contact
+	end
+
+	
 end

@@ -1,7 +1,5 @@
 Gethired::Application.routes.draw do
   
-  resources :posts
-
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,6 +9,8 @@ Gethired::Application.routes.draw do
   root 'welcome#index'
   get "/blog/" => "welcome#blog" 
   get '/gethired-resumes'=>'templates#index'
+  get '/contact'=>'welcome#contact'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

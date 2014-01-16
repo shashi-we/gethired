@@ -9,40 +9,25 @@
 							<h2>Resumes</h2>
 						</header>
 						<div>
-							<div class="row">
-								<div class="4u">
-									<section class="box">
-										<a href="#" class="image image-full">
-											<%= image_tag("pic02.jpg") %>
-											<!-- <img src="/assets/pic02.jpg" alt="" /> --></a>
-										<header>
-											<h3>Resumes</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-									</section>
-								</div>
-								<div class="4u">
-									<section class="box">
-										<a href="#" class="image image-full">
-											<%= image_tag("pic03.jpg") %>
-											<!-- <img src="/assets/pic03.jpg" alt="" /> --></a>
-										<header>
-											<h3>Resumes</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-									</section>
-								</div>
-								<div class="4u">
-									<section class="box">
-										<a href="#" class="image image-full">
-											<%= image_tag("pic04.jpg") %>
-											<!-- <img src="/assets/pic04.jpg" alt="" /> --></a>
-										<header>
-											<h3>Resumes</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-									</section>
-								</div>
+							<% @template.each do |template| %>
+								<div class="row">
+									<div class="4u">
+										<section class="box">
+											<a href="#" class="image image-full">
+												<%= image_tag template.main_image %>
+												<!-- <img src="/assets/pic02.jpg" alt="" /> --></a>
+											<header>
+												<h3><%= template.name %></h3>
+											</header>
+											<p><%=template.short_desc%></p>
+											<p>
+												<div class="addthis_toolbox addthis_default_style ">
+													<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+												</div> 
+											</p>
+										</section>
+									</div>
+								<%end%>
 							</div>
 						</div>
 					</section>

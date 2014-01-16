@@ -11,14 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113124433) do
+ActiveRecord::Schema.define(version: 20140116121749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "posts", force: true do |t|
-    t.string   "name"
-    t.text     "body"
+  create_table "colors", force: true do |t|
+    t.integer  "template_id"
+    t.string   "title"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "completion_days", force: true do |t|
+    t.integer  "template_id"
+    t.string   "title"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "number_of_pages", force: true do |t|
+    t.integer  "template_id"
+    t.string   "title"
+    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +53,35 @@ ActiveRecord::Schema.define(version: 20140113124433) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
+  create_table "templates", force: true do |t|
+    t.string   "name"
+    t.text     "short_desc"
+    t.text     "detail_desc"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
+    t.string   "slider1_file_name"
+    t.string   "slider1_content_type"
+    t.integer  "slider1_file_size"
+    t.datetime "slider1_updated_at"
+    t.string   "slider2_file_name"
+    t.string   "slider2_content_type"
+    t.integer  "slider2_file_size"
+    t.datetime "slider2_updated_at"
+    t.string   "slider3_file_name"
+    t.string   "slider3_content_type"
+    t.integer  "slider3_file_size"
+    t.datetime "slider3_updated_at"
+    t.string   "slider4_file_name"
+    t.string   "slider4_content_type"
+    t.integer  "slider4_file_size"
+    t.datetime "slider4_updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -49,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140113124433) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

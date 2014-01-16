@@ -46,6 +46,9 @@ group :test,:development do
 end
 
 gem 'rails_admin'
+gem "paperclip", "~> 3.0"
+gem 'aws-s3', :require => 'aws/s3'
+gem 'aws-sdk'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
