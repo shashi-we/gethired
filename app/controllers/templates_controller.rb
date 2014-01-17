@@ -5,9 +5,9 @@ class TemplatesController < ApplicationController
 
   def show
     @template = Template.find(params[:id])
-    @completion_day = @template.completion_days
-    @pages = @template.number_of_pages
-    @colors = @template.colors
+    @completion_day = @template.completion_days.order('price ASC')
+    @pages = @template.number_of_pages.order('price ASC')
+    @colors = @template.colors.order('price ASC')
   end
 
 end

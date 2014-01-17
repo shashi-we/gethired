@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/jim/carmen-rails.git
+  revision: 076dd251e075d07408e0b5268f886956ef2a347c
+  specs:
+    carmen-rails (1.0.0)
+      carmen (~> 1.0.0)
+      rails
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: d7ddf47d57736b607b9d0717a114ceb6bcd3f4b0
   specs:
@@ -48,6 +56,8 @@ GEM
     bcrypt-ruby (3.1.2)
     buftok (0.2.0)
     builder (3.1.4)
+    carmen (1.0.0)
+      unicode_utils (~> 1.4.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -60,10 +70,6 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
-    countries (0.9.3)
-      currencies (~> 0.4.2)
-    country-select (1.1.1)
-    currencies (0.4.2)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -232,6 +238,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode_utils (1.4.0)
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
@@ -243,9 +250,8 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   aws-sdk
+  carmen-rails (~> 1.0.0)!
   coffee-rails (~> 4.0.0)
-  countries
-  country-select
   debugger
   devise
   fancybox2-rails (~> 0.2.4)

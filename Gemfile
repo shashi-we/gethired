@@ -52,8 +52,8 @@ gem "paperclip", "~> 3.0"
 gem 'aws-s3', :require => 'aws/s3'
 gem 'aws-sdk'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'countries'
-gem 'country-select'
+
+gem 'carmen-rails', '~> 1.0.0', github: 'jim/carmen-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
