@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20140116121749) do
 
   create_table "templates", force: true do |t|
     t.string   "name"
-    t.text     "short_desc"
-    t.text     "detail_desc"
+    t.text     "short_description"
+    t.text     "detail_description"
     t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"

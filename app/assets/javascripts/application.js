@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require skel.min
 //= require skel-panels.min.js
+//= require fancybox
+//= require jquery.ui.all
+//= require jquery.modal
 //= require_tree .

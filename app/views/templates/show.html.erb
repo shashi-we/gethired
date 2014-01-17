@@ -1,0 +1,109 @@
+<div id="main-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="4u">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <center>
+              <img src="https://s3.amazonaws.com/media.jetstrap.com/Sw03DegMTxCOQpLhNvAp_coralsea_resume_small.png">
+            </center>
+          </div>
+        </div>
+      </div>
+      <div class="8u">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= @template.name %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= @template.detail_description %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <hr>
+    <div class="row">
+      <div class="6u">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="addthis_toolbox addthis_default_style ">
+              <a class="addthis_button_tweet"></a>
+              <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+              <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div>price: <%= '$'+''+@template.price.to_s %></div>
+            <%=select_tag 'completion-day', options_for_select(@completion_day.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.id] })
+            %>
+            <%=select_tag 'completion-day', options_for_select(@pages.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.id] })
+            %>
+            <%=select_tag 'completion-day', options_for_select(@colors.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.id] })
+            %>
+          </div>
+        </div>
+      </div>
+      <div class="6u">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div id="checkout"style="display: none; ">
+              <p>
+                <div>Email Address</div>
+                <%= text_field_tag 'email' %>
+                <div>
+                  <%= radio_button_tag(:cc, "bitcoin") %>
+                  <%= label_tag(:cc_bitcoin, "Bitcoin") %><br/>
+                  <%= radio_button_tag(:cc, "card") %>
+                  <%= image_tag('rsz_cardicons.png')%>
+                </div>
+                <div>
+                  <div class="addthis_toolbox addthis_default_style ">
+                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                  </div>
+                </div> 
+                <div>
+                  <%= link_to 'Cancel', nil, :rel => "modal:close" ,:class=>"button" %>
+                  <%= link_to_modal 'Next','#cc-card',:class=>"button"%>
+                </div>
+              </p>
+            </div>
+            <div id="cc-card"style="display: none; ">
+              <div>First name</div>
+                <%= text_field_tag 'first_name' %>
+              
+              <div>Last name</div>
+                <%= text_field_tag 'last_name' %>
+              
+              <div>Company</div>
+                <%= text_field_tag 'company' %>
+                
+              <div>Address</div>
+                <%= text_field_tag 'address' %>
+              
+              <div>Address2</div>
+                <%= text_field_tag 'address2' %>
+                
+              <div>City</div>
+                <%= text_field_tag 'city' %>
+              
+              <div>Postal/ZIP Code</div>
+                <%= text_field_tag 'zipcode' %>
+            
+              <%= link_to_modal "back", "#checkout", :class=>"button" %>
+            </div>
+
+            <%= link_to_modal "Checkout", "#checkout", :class=>"button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

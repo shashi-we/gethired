@@ -22,8 +22,9 @@ gem "rack-reverse-proxy", :require => "rack/reverse_proxy"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
-gem 'twitter'
+gem 'fancybox2-rails', '~> 0.2.4'
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -45,10 +46,14 @@ group :test,:development do
 	gem 'debugger'
 end
 
+gem 'twitter'
 gem 'rails_admin'
 gem "paperclip", "~> 3.0"
 gem 'aws-s3', :require => 'aws/s3'
 gem 'aws-sdk'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'countries'
+gem 'country-select'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

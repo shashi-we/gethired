@@ -8,9 +8,9 @@ Gethired::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get "/blog/" => "welcome#blog" 
-  get '/gethired-resumes'=>'templates#index'
   get '/contact'=>'welcome#contact'
-
+  resources :templates
+  resources :charges
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

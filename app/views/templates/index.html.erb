@@ -10,10 +10,10 @@
 						</header>
 						<div>
 							<div class="row">
-								<% @template.each_with_index do |template,index| %>
+								<% @templates.each_with_index do |template,index| %>
 									<div class="4u">
 										<section class="box">
-											<a href="#" class="image image-full">
+											<a href="<%=template_path(template)%>" class="image image-full">
 												<%= image_tag template.main_image(:medium),:width=>'373',:height=>'232'%>
 												<!-- <img src="/assets/pic02.jpg" alt="" /> --></a>
 											<header>
