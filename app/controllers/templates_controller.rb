@@ -10,4 +10,10 @@ class TemplatesController < ApplicationController
     @colors = @template.colors.order('price ASC')
   end
 
+  def set_session
+  	respond_to do |format|
+      format.js { render :text => 'ok' }
+    end
+  end
+
 end
