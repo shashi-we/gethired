@@ -38,9 +38,8 @@ class ChargesController < ApplicationController
 
 
 	def bitcoin
-		client = BitPay::Client.new 'Liq5X9eLZP17xr9uBjNnex7w4MfEPeF2ESuoTmJjrw'
-		invoice = client.post 'invoice', {:price => set_price, :currency => 'USD',:buyerEmail=>session[:email]}
-		debugger
+		client = BitPay::Client.new 'Liq5X9eLZP17xr9uBjNnex7w4MfEPeF2ESuoTmJjrw'	
+		invoice = client.post 'invoice', {:price => set_price, :currency => 'USD',:buyerEmail=>'test@gmail.com'}
 		@url = invoice.find{|key,value| key["url"]}[1]
 	end
 
