@@ -73,7 +73,7 @@
                 <div>
                   <%= link_to 'Cancel', nil, :rel => "modal:close" ,:class=>"button" %>
                   <%= link_to_modal 'Next',new_charge_path,:class=>"button checkout",:id=>"card"%>
-                  <%= link_to 'Next', nil, :rel => "modal:close" ,:class=>"button",:id=>'bitcoin' %>
+                  <%= link_to_modal 'Next', bitcoin_charges_path,:class=>"button checkout",:id=>'bitcoin'%>
                 </div>
               </p>
             </div>
@@ -126,7 +126,13 @@ $("#cc_card").click(function(){
 
 $(".checkout").click(function(){
   var email_address = $('#email_address').val();
-  if(email_address != 0){
+  var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+  if (reg.test(email_address) == false) {
+    $('.error-message').text("Email Address can't be blank");
+    return false;
+  }
+  else{
     var completion = $( "#completion-day option:selected").val();
     var page = $( "#pages option:selected").val();
     var color = $( "#colors option:selected").val();
@@ -134,9 +140,6 @@ $(".checkout").click(function(){
     
     $.get( "<%=set_session_templates_path%>", { completion_id:completion , page_id: page , color_id: color, template_id : template ,email: email_address} );
   }
-  else{
-    $('.error-message').text("Email Address can't be blank");
-    return false;
-  }
+
 });
 </script>

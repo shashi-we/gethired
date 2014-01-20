@@ -11,6 +11,13 @@ class TemplatesController < ApplicationController
   end
 
   def set_session
+    session[:email] = nil
+    session[:email] = params[:email]
+    d_id = params[:completion_id].gsub(/(\d+)\W/, '').to_i 
+    p_id = params[:page_id].gsub(/(\d+)\W/, '').to_i 
+    c_id = params[:color_id].gsub(/(\d+)\W/, '').to_i
+    t_id = params[:template_id].to_i
+    @template = Template.find(t_id) 
   	respond_to do |format|
       format.js { render :text => 'ok' }
     end

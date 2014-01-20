@@ -1,0 +1,9 @@
+<h3>Please click on this invoice to complete payment: </h3>
+<a href="<%=@url%>" target="_blank">Invoice</a>
+<br/>
+<iframe src="<%= @url + '&view=iframe' %>" width='514px;' height='196px;' />
+<style>
+.modal{
+  width: inherit;
+}
+</style>

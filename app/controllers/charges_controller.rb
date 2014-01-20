@@ -2,6 +2,10 @@ class ChargesController < ApplicationController
 
 	layout 'charges'
 
+  def index
+
+  end
+
 	def new
 	end
 
@@ -21,10 +25,20 @@ class ChargesController < ApplicationController
 	    :currency    => 'usd'
 	  )
 
-	rescue Stripe::CardError => e
-	  flash[:alert] = e.message
-	  redirect_to new_charge_path
+		#rescue Stripe::CardError => e
+    #flash[:alert] = e.message
+		redirect_to charges_path
+      # respond_to do |format|
+      # # format.html
+      # # format.xml { render :xml => @users }
+      #   format.js { render :res => e.message }
+      # end
 	end
 
 
+	def bitcoin
+		client = BitPay::Client.new 'Liq5X9eLZP17xr9uBjNnex7w4MfEPeF2ESuoTmJjrw'
+		invoice = client.post 'invoice', {:price => 10.00, :currency => 'USD',:buyerEmail=>"example@gmail.com"}
+		@url = invoice.find{|key,value| key["url"]}[1]
+	end
 end

@@ -9,12 +9,17 @@ Gethired::Application.routes.draw do
   root 'welcome#index'
   get "/blog/" => "welcome#blog" 
   get '/contact'=>'welcome#contact'
+  
   resources :templates do 
     collection do
       get 'set_session'
     end
   end
-  resources :charges
+  resources :charges do 
+    collection do
+      get 'bitcoin'
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

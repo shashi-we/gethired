@@ -24,7 +24,7 @@ gem "rack-reverse-proxy", :require => "rack/reverse_proxy"
 gem 'jquery-rails'
 gem 'fancybox2-rails', '~> 0.2.4'
 gem 'jquery-ui-rails'
-gem 'jquery-modal-rails'
+gem 'jquery-modal-rails', :git=>'https://github.com/dei79/jquery-modal-rails.git'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -52,7 +52,8 @@ gem "paperclip", "~> 3.0"
 gem 'aws-s3', :require => 'aws/s3'
 gem 'aws-sdk'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'carmen-rails', '~> 1.0.0', github: 'jim/carmen-rails'
+#gem 'carmen-rails', '~> 1.0.0', github: 'jim/carmen-rails'
+gem 'bitpay-client', :require => 'bitpay'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,10 +1,12 @@
 GIT
-  remote: git://github.com/jim/carmen-rails.git
-  revision: 076dd251e075d07408e0b5268f886956ef2a347c
+  remote: https://github.com/dei79/jquery-modal-rails.git
+  revision: 51880bf9dfd6498d9ec4507aa04f6d33c625d4a7
   specs:
-    carmen-rails (1.0.0)
-      carmen (~> 1.0.0)
-      rails
+    jquery-modal-rails (0.0.4)
+      jquery-ui-rails
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
+      uuidtools
 
 GIT
   remote: https://github.com/stripe/stripe-ruby
@@ -54,10 +56,11 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
+    bitpay-client (0.1.2)
+      json
+      rack
     buftok (0.2.0)
     builder (3.1.4)
-    carmen (1.0.0)
-      unicode_utils (~> 1.4.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -103,11 +106,6 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-modal-rails (0.0.4)
-      jquery-ui-rails
-      railties (>= 3.2.0, < 5.0)
-      thor (~> 0.14)
-      uuidtools
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -238,7 +236,6 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicode_utils (1.4.0)
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
@@ -250,13 +247,13 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   aws-sdk
-  carmen-rails (~> 1.0.0)!
+  bitpay-client
   coffee-rails (~> 4.0.0)
   debugger
   devise
   fancybox2-rails (~> 0.2.4)
   jbuilder (~> 1.2)
-  jquery-modal-rails
+  jquery-modal-rails!
   jquery-rails
   jquery-ui-rails
   paperclip (~> 3.0)

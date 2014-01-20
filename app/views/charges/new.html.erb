@@ -2,37 +2,15 @@
 <%= form_tag charges_path ,:id=>"payment-form" do %>
   <span class="payment-errors"></span>
   
-  <div>First name : 
-    <%= text_field_tag 'first_name' %>
-  </div>
-  <div>Last name :
-    <%= text_field_tag 'last_name' %>
-  </div>
-  <div>Company :
-    <%= text_field_tag 'company' %>
-  </div>
-  <div>Address :
-    <%= text_field_tag 'address' %>
-  </div>
-  <div>Address2 :
-    <%= text_field_tag 'address2' %>
-  </div>
-  <div>City :
-    <%= text_field_tag 'city' %>
-  </div>
-  <div>Postal/ZIP Code :
-    <%= text_field_tag 'zipcode' %>
-  </div>
-  <div>Country :
-    <%=country_select :country_code, {prompt: 'Please select a country'} %>
-  </div>
-  <div>State
-    <%= text_field_tag 'state' %>
-  </div>
-  <div>Phone number
-    <%= text_field_tag 'phone' %>
+  <div class="form-row">
+    <label>
+      <span>Email Address</span>
+      <%= text_field_tag 'email',session[:email]%>
+     <!--  <input type="text" size="20" data-stripe="number"/> -->
+    </label>
   </div>
 
+  
   <div class="form-row">
     <label>
       <span>Card Number</span>
@@ -75,8 +53,7 @@
         number: $('.card-number').val(),
         cvc: $('.card-cvc').val(),
         exp_month: $('.card-expiry-month').val(),
-        exp_year: $('.card-expiry-year').val(),
-        name: 'surendra'
+        exp_year: $('.card-expiry-year').val()
       }, stripeResponseHandler);
       return false;
     });
