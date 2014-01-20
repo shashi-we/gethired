@@ -46,7 +46,11 @@ class ChargesController < ApplicationController
 
 	private
 	  def set_price
-	  	amount = session[:template_price]+session[:completion_price]+session[:page_price]+session[:color_price]
+	  	if !session[:template_price].nil?
+	  		amount = session[:template_price]+session[:completion_price]+session[:page_price]+session[:color_price]
+      else
+      	amount = 5
+      end
       return amount
 	  end
 
