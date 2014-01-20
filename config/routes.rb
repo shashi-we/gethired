@@ -8,11 +8,10 @@ Gethired::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get "/blog/" => "welcome#blog" 
-  get '/contact'=>'welcome#contact'
   
   resources :templates do 
     collection do
-      get 'set_session'
+      post 'set_session'
     end
   end
   resources :charges do 
