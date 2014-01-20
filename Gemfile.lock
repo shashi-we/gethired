@@ -73,7 +73,6 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
-    dalli (2.7.0)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -250,7 +249,6 @@ DEPENDENCIES
   aws-sdk
   bitpay-client
   coffee-rails (~> 4.0.0)
-  dalli
   debugger
   devise
   fancybox2-rails (~> 0.2.4)
