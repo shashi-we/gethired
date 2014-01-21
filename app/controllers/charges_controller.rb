@@ -3,11 +3,13 @@ class ChargesController < ApplicationController
 	layout 'charges'
 
   def index
-
+  	@user = User.new
+  	respond_to do |format|
+      format.html {render :layout => 'application'}
+    end
   end
 
 	def new
-		debugger
 	end
 
 	def create
@@ -26,33 +28,31 @@ class ChargesController < ApplicationController
 	    :currency    => 'usd'
 	  )
 
-		#rescue Stripe::CardError => e
-    #flash[:alert] = e.message
+	# rescue Stripe::CardError => e
+  #    flash[:alert] = e.message
 		redirect_to charges_path
-      # respond_to do |format|
-      # # format.html
-      # # format.xml { render :xml => @users }
-      #   format.js { render :res => e.message }
-      # end
+    # respond_to do |format|
+    # # format.html
+    # # format.xml { render :xml => @users }
+    #   format.js { render :res => e.message }
+    # end
 	end
 
 
 	def bitcoin
-		client = BitPay::Client.new 'Liq5X9eLZP17xr9uBjNnex7w4MfEPeF2ESuoTmJjrw'	
-		invoice = client.post 'invoice', {:price => set_price, :currency => 'USD',:buyerEmail=>'test@gmail.com'}
+		client = BitPay::Client.new bitcoin_access
+		invoice = client.post 'invoice', {:price => set_price, :currency => 'USD',:buyerEmail=>session[:email],:redirectURL=>'http://127.0.0.1/charges'}
 		@url = invoice.find{|key,value| key["url"]}[1]
 	end
 
 	private
 	  def set_price
-	  	if !session[:template_price].nil?
-	  		amount = session[:template_price]+session[:completion_price]+session[:page_price]+session[:color_price]
-      else
-      	amount = 5
-      end
+	  	amount = session[:template_price]+session[:completion_price]+session[:page_price]+session[:color_price]
       return amount
 	  end
 
-	  
-
+	  def bitcoin_access
+	  	access_key = Setting.where(:account_type=>'bitcoin').access_key
+	  	return access_key
+	  end 
 end

@@ -12,7 +12,7 @@ class Template < ActiveRecord::Base
     :bucket => 'gethired.io',
     :default_url   => "/images/thumb/missing.png",
     :path => "/templates/:attachment/:id/:style.:extension",
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => {:access_key_id => Setting.where(:account_type=>'s3').first.access_key, :secret_access_key => Setting.where(:account_type=>'s3').first.secret_access},
     :s3_protocol => 'https'
   has_attached_file :slider1,
     # :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
@@ -22,7 +22,7 @@ class Template < ActiveRecord::Base
     :bucket => 'gethired.io',
     :default_url   => "/images/thumb/missing.png",
     :path => "/templates/:attachment/:id/:style.:extension",
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => {:access_key_id => Setting.where(:account_type=>'s3').first.access_key, :secret_access_key => Setting.where(:account_type=>'s3').first.secret_access},
     :s3_protocol => 'https'
   has_attached_file :slider2,
     :styles => {:medium =>"373x260"},
@@ -30,7 +30,7 @@ class Template < ActiveRecord::Base
     :bucket => 'gethired.io',
     :default_url   => "/images/thumb/missing.png",
     :path => "/templates/:attachment/:id/:style.:extension",
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => {:access_key_id => Setting.where(:account_type=>'s3').first.access_key, :secret_access_key => Setting.where(:account_type=>'s3').first.secret_access},
     :s3_protocol => 'https'
   has_attached_file :slider3,
     :styles => {:medium =>"373x260"},
@@ -38,7 +38,7 @@ class Template < ActiveRecord::Base
     :bucket => 'gethired.io',
     :default_url   => "/images/thumb/missing.png",
     :path => "/templates/:attachment/:id/:style.:extension",
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => {:access_key_id => Setting.where(:account_type=>'s3').first.access_key, :secret_access_key => Setting.where(:account_type=>'s3').first.secret_access},
     :s3_protocol => 'https'
   has_attached_file :slider4,
     :styles => {:medium =>"373x260"},
@@ -46,7 +46,10 @@ class Template < ActiveRecord::Base
     :bucket => 'gethired.io',
     :default_url   => "/images/thumb/missing.png",
     :path => "/templates/:attachment/:id/:style.:extension",
-    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => {:access_key_id => Setting.where(:account_type=>'s3').first.access_key, :secret_access_key => Setting.where(:account_type=>'s3').first.secret_access},
     :s3_protocol => 'https'
+
+ 
+  
  
 end

@@ -11,7 +11,8 @@ Gethired::Application.routes.draw do
   
   resources :templates do 
     collection do
-      post 'set_session'
+      get 'set_session'
+      post 'upload'
     end
   end
   resources :charges do 

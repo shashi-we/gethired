@@ -10,13 +10,10 @@
     <!--[if lte IE 8]><script src="/assets/html5shiv.js"></script><link rel="stylesheet" href="/assets/ie8.css" /><![endif]-->
   </head>
   <body class="homepage">
-    <% if flash[:alert] %>
-      <p class="flash-error"><%= flash[:alert] %></p>
-    <% end %>
-    <% if flash[:notice] %>
-      <p class="flash-notice"><%= flash[:notice] %></p>
-    <% end %>
     <%= render 'layouts/header'%>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
     <%= yield %>
     <%= render 'layouts/footer'%>
   </body>

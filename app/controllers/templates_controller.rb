@@ -24,6 +24,20 @@ class TemplatesController < ApplicationController
     end
   end
 
+  def upload
+    email = session[:email]
+    password_length = 8
+    password = Devise.friendly_token.first(password_length)
+    @user = User.new(:email => email, :password => password, :password_confirmation => password,:document=>params[:user][:document])
+    if @user.save
+      flash[:alert] = 'Thanks we will send you resume on your email adrress.'
+      redirect_to templates_path
+    else
+      flash[:alert] = @user.errors.messages
+      redirect_to charges_path
+    end
+  end
+
   private 
     def set_session_varible(day_id,page_id,color_id,tem_id,email)
       session[:email],session[:template_price],session[:completion_price],session[:page_price],session[:color_price] = nil,nil,nil,nil,nil

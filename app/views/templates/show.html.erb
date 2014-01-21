@@ -138,14 +138,12 @@ $(".checkout").click(function(){
     var template = parseInt("<%= @template.id %>");
     $.ajax({
       url: "<%=set_session_templates_path%>",
-      type: 'post',
-      dataType: 'json',
+      type: 'get',
       data:{completion_id:completion , page_id: page , color_id: color, template_id : template ,email: email_address},
       beforeSend: function(xhr) {
       xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
       }
     });  
-    // $.get( "<%=set_session_templates_path%>", { completion_id:completion , page_id: page , color_id: color, template_id : template ,email: email_address} );
   }
 
 });
