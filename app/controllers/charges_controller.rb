@@ -52,7 +52,7 @@ class ChargesController < ApplicationController
 	  end
 
 	  def bitcoin_access
-	  	access_key = Setting.where(:account_type=>'bitcoin').access_key
+	  	access_key = Setting.where(:account_type=>'bitcoin').first.access_key
 	  	return access_key
 	  end 
 end
