@@ -30,7 +30,7 @@ class Template < ActiveRecord::Base
     :bucket => 'gethired.io',
     :default_url   => "/images/thumb/missing.png",
     :path => "/templates/:attachment/:id/:style.:extension",
-    :s3_credentials => {:access_key_id => "#{Rails.root}/config/s3.yml",
+    :s3_credentials => "#{Rails.root}/config/s3.yml",
     :s3_protocol => 'https'
   has_attached_file :slider3,
     :styles => {:medium =>"373x260"},
