@@ -1,5 +1,5 @@
 Rails.configuration.stripe = {
-  :publishable_key => 'pk_test_UHCTGJrledTZplEBOojNgJtc',      
-  :secret_key      => 'sk_test_cMMyhLWIJSZs835SbPkd39y6'
+  :publishable_key => Setting.find_by(account_type: 'stripe').access_key,      
+  :secret_key      => Setting.find_by(account_type: 'stripe').secret_access
 }
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
