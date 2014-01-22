@@ -9,7 +9,7 @@
 						</header>
 						<div>
 							<div class="row">
-								<%= form_for(@user,:url=>upload_templates_path, :html => { :multipart => true }) do |f| %>
+								<%= form_for @order do |f| %>
 									<p>
 									  <b> Attachment :</b>
 									  <%= f.file_field :document %>
@@ -20,15 +20,21 @@
 								<%end%>
 							</div>
 					  </div>
-						
-						
 					</section>
-
 			</div>
 		</div>
 	</div>
 </div>
 
-<script>
+<script type="text/javascript">
+  $(function() {
+		$('#order_document').change(function() {
+		var fileExtension = ['doc', 'docx', 'txt', 'pdf', 'rtf'];
+			if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+			alert("Only 'doc', 'docx', 'txt', 'pdf', 'rtf'  formats are allowed.");
+			}
+		})
+	})
 
+	
 </script>

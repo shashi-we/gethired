@@ -1,20 +1,13 @@
 class ChargesController < ApplicationController
 
 	layout 'charges'
-
-  def index
-  	@user = User.new
-  	respond_to do |format|
-      format.html {render :layout => 'application'}
-    end
-  end
-
+  
 	def new
 	end
 
 	def create
 	  # Amount in cents
-	  @amount = (set_price*100)
+	  @amount = (session[:price].to_i*100)
 
 	  customer = Stripe::Customer.create(
 	    :email => session[:email],
@@ -27,29 +20,56 @@ class ChargesController < ApplicationController
 	    :description => 'Stripe customer',
 	    :currency    => 'usd'
 	  )
+ 
+		# rescue Stripe::CardError => e
+   	#  respond_to do |format|
+   	#    format.js { render :res => 'ok' }
+   	#  end
 
-	# rescue Stripe::CardError => e
-  #    flash[:alert] = e.message
-		redirect_to charges_path
-    # respond_to do |format|
-    # # format.html
-    # # format.xml { render :xml => @users }
-    #   format.js { render :res => e.message }
-    # end
+	  # #    flash[:alert] = e.message
+	  create_user_order
+		redirect_to uploadresume_orders_path
 	end
 
 
 	def bitcoin
 		client = BitPay::Client.new bitcoin_access
-		invoice = client.post 'invoice', {:price => set_price, :currency => 'USD',:buyerEmail=>session[:email],:redirectURL=>'http://127.0.0.1/charges'}
+		invoice = client.post 'invoice', {:price => session[:price].to_i , :currency => 'USD',:buyerEmail=>session[:email]}
 		@url = invoice.find{|key,value| key["url"]}[1]
+		create_user_order
 	end
 
 	private
-	  def set_price
-	  	amount = session[:template_price]+session[:completion_price]+session[:page_price]+session[:color_price]
-      return amount
+
+	  def create_user_order
+	  	# create user
+	  	email = session[:email]
+	    password_length = 8
+	    password = Devise.friendly_token.first(password_length)
+	    email_exists = User.find_by(:email => params[:email])
+	    if !email_exists.blank?
+	      @user = email_exists
+	    else
+	      @user = User.create!(:email => email, :password => password, :password_confirmation => password)
+	    end
+	    # create order 
+	    template = Template.find(session[:t_id])
+      completion_day  = CompletionDay.find(session[:d_id])
+      page = NumberOfPage.find(session[:p_id])
+      color = Color.find(session[:c_id])
+      @order = @user.orders.create!(:template_name=>template.name,
+		      	                :template_price=>template.price,
+											      :complete_day =>completion_day.title,
+											      :complete_day_price=>completion_day.price,
+											      :number_of_page => page.title,
+											      :page_price=>page.price,
+											      :color=>color.title,
+											      :color_price=>color.price,
+											      :status=>'Processing',
+											      :total_price=>session[:price])
+      session[:order_id] = @order.id
 	  end
+
 
 	  def bitcoin_access
 	  	access_key = Setting.where(:account_type=>'bitcoin').first.access_key

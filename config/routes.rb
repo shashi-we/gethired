@@ -9,6 +9,11 @@ Gethired::Application.routes.draw do
   root 'welcome#index'
   get "/blog/" => "welcome#blog" 
   
+  resources :orders do 
+    collection do
+      get 'uploadresume'
+    end
+  end
   resources :templates do 
     collection do
       get 'set_session'

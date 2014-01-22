@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121190923) do
+ActiveRecord::Schema.define(version: 20140122161016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,26 @@ ActiveRecord::Schema.define(version: 20140121190923) do
     t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.string   "template_name"
+    t.string   "status"
+    t.string   "total_price"
+    t.integer  "template_price"
+    t.string   "complete_day"
+    t.integer  "complete_day_price"
+    t.string   "number_of_page"
+    t.integer  "page_price"
+    t.string   "color"
+    t.integer  "color_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "rails_admin_histories", force: true do |t|
@@ -104,10 +124,6 @@ ActiveRecord::Schema.define(version: 20140121190923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"
-    t.string   "document_file_name"
-    t.string   "document_content_type"
-    t.integer  "document_file_size"
-    t.datetime "document_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -43,8 +43,7 @@
 
 <script type="text/javascript">
   // This identifies your website in the createToken call below
-  var pub_key = "<%=Setting.where(:account_type=>'stripe').first.access_key%>"
-  Stripe.setPublishableKey();
+  Stripe.setPublishableKey('pk_test_UHCTGJrledTZplEBOojNgJtc');
   // ...
   jQuery(function($) {
     $('#payment-form').submit(function(event){
