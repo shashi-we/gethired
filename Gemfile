@@ -54,6 +54,8 @@ gem 'aws-sdk'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 #gem 'carmen-rails', '~> 1.0.0', github: 'jim/carmen-rails'
 gem 'bitpay-client', :require => 'bitpay'
+
+gem 'gibbon', :git=> 'https://github.com/amro/gibbon.git' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

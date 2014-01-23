@@ -20,9 +20,15 @@ class TemplatesController < ApplicationController
       session[:t_id] = params[:template_id].to_i
       session[:email] = params[:email]
       set_price
+      @template = Template.find(session[:t_id])
+      email_exists = Visiter.find_by(:email_id => session[:email])
+      if !email_exists.blank?
+        email_exists.destroy
+      end
+      @visitor = Visiter.create!(:email_id => session[:email], :template_name => @template.name, :price => @template.price)
     end
   	respond_to do |format|
-      format.js { render :text => 'ok' }
+      format.js { render :text => 'ok' } 
     end
   end
 

@@ -48,8 +48,4 @@ class Template < ActiveRecord::Base
     :path => "/templates/:attachment/:id/:style.:extension",
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :s3_protocol => 'https'
-
- 
-  
- 
 end

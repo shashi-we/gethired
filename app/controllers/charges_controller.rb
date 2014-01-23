@@ -47,6 +47,10 @@ class ChargesController < ApplicationController
 	    password_length = 8
 	    password = Devise.friendly_token.first(password_length)
 	    email_exists = User.find_by(:email => params[:email])
+	    email_exists_visitor = Visiter.find_by(:email_id => params[:email])
+	    if !email_exists_visitor.blank?
+	    	email_exists_visitor.destroy
+	    end
 	    if !email_exists.blank?
 	      @user = email_exists
 	    else
@@ -68,6 +72,7 @@ class ChargesController < ApplicationController
 											      :status=>'Processing',
 											      :total_price=>session[:price])
       session[:order_id] = @order.id
+      ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price])
 	  end
 
 

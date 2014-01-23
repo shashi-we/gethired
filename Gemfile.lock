@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/amro/gibbon.git
+  revision: c094a23174ec38e0227e00484f44ea383c81dafd
+  specs:
+    gibbon (1.1.1)
+      httparty
+      multi_json (>= 1.3.4)
+
+GIT
   remote: https://github.com/dei79/jquery-modal-rails.git
   revision: 51880bf9dfd6498d9ec4507aa04f6d33c625d4a7
   specs:
@@ -102,6 +110,9 @@ GEM
     http (0.5.0)
       http_parser.rb
     http_parser.rb (0.6.0)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -124,6 +135,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.4)
+    multi_xml (0.5.5)
     multipart-post (1.2.0)
     nested_form (0.3.2)
     nokogiri (1.6.1)
@@ -252,6 +264,7 @@ DEPENDENCIES
   debugger
   devise
   fancybox2-rails (~> 0.2.4)
+  gibbon!
   jbuilder (~> 1.2)
   jquery-modal-rails!
   jquery-rails
