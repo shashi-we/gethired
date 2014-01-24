@@ -1,4 +1,4 @@
-Gibbon::API.api_key = "5bb1fa7488637b614defdc5cbf2915b4-us3"
+Gibbon::API.api_key = "9d1afb5d1fab1041d1be6d1d92cf0d5c-us3"
 
 Gibbon::API.timeout = 15
 

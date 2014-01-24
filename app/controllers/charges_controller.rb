@@ -73,6 +73,7 @@ class ChargesController < ApplicationController
 											      :total_price=>session[:price])
       session[:order_id] = @order.id
       ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price])
+	    
 	  end
 
 
