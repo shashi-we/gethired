@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   def update
   	@order = Order.find(session[:order_id])
   	if @order.update_attributes(:document=>params[:order][:document])
-  		flash[:notice] = 'We will send your password on given email address you can check your resume status.'
+  		flash[:notice] = 'Your resume successfully uploded.'
       redirect_to new_user_session_path
   	else
   		render 'uploadresume'
