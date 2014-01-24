@@ -25,7 +25,7 @@ class TemplatesController < ApplicationController
       if !email_exists.blank?
         email_exists.destroy
       end
-      @visitor = Visiter.create!(:email_id => session[:email], :template_name => @template.name, :price => @template.price)
+      @visitor = Visitor.create!(:email_id => session[:email], :template_name => @template.name, :price => @template.price)
     end
   	respond_to do |format|
       format.js { render :text => 'ok' } 

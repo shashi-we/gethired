@@ -47,7 +47,7 @@ class ChargesController < ApplicationController
 	    password_length = 8
 	    password = Devise.friendly_token.first(password_length)
 	    email_exists = User.find_by(:email => params[:email])
-	    email_exists_visitor = Visiter.find_by(:email_id => params[:email])
+	    email_exists_visitor = Visitor.find_by(:email_id => params[:email])
 	    if !email_exists_visitor.blank?
 	    	email_exists_visitor.destroy
 	    end

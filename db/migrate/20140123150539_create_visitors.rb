@@ -9,6 +9,6 @@ class CreateVisitors < ActiveRecord::Migration
     end
   end
   def self.down
-  	drop_table :visiters
+  	drop_table :visitors
   end
 end
