@@ -18,6 +18,16 @@ RailsAdmin.config do |config|
     redirect_to main_app.root_path unless warden.user.admin?
   end
 
+  config.model 'Color' do
+    visible false
+  end
+  config.model 'CompletionDay' do
+    visible false
+  end
+  config.model 'NumberOfPage' do
+    visible false
+  end
+
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
 
