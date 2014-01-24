@@ -11,15 +11,22 @@
 								<ul>
 									<li class="current_page_item"><a href="/">HOME</a></li>
 									<li><a href="/templates">All RESUMES</a></li>
-									<li><a href="#">WHY GETHIRED?</a></li>
-									<li><a href="#">TESTIMONIALS</a></li>
 									<li><a href="http://support.gethired.io" target='_blank'>FAQ</a></li>
 									<li><a href="http://support.gethired.io" target='_blank'>CONTACT</a></li>
 									<li><a href="/blog/">BLOG</a></li>
+									<% if current_user %>
+										<li>
+											<a href="<%= user_path(current_user)%>">User Account</a>
+										  <ul>
+												<li><%= link_to "Order", user_path(current_user) %></li>
+												<li><%= link_to 'Change Password', edit_user_registration_path %></li>
+												<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+												
+											</ul>
+										</li>
+								  <% end %>
 								</ul>
 							</nav>
 					</section>
 			</div>
 		</div>
-  </div>
-</div>

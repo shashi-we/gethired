@@ -34,7 +34,7 @@ class ChargesController < ApplicationController
 
 	def bitcoin
 		client = BitPay::Client.new bitcoin_access
-		invoice = client.post 'invoice', {:price => session[:price].to_i , :currency => 'USD',:buyerEmail=>session[:email]}
+		invoice = client.post 'invoice', {:price => 1, :currency => 'USD',:buyerEmail=>session[:email],:redirectURL=>'http://gethired.herokuapp.com/orders/uploadresume'}
 		@url = invoice.find{|key,value| key["url"]}[1]
 		create_user_order
 	end
@@ -72,7 +72,7 @@ class ChargesController < ApplicationController
 											      :status=>'Processing',
 											      :total_price=>session[:price])
       session[:order_id] = @order.id
-      ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price])
+      ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price],password)
 	    
 	  end
 

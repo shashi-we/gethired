@@ -4,7 +4,7 @@ class TemplatesController < ApplicationController
   end
 
   def show
-    reset_session
+    session[:email],session[:t_id],session[:d_id],session[:p_id],session[:c_id] = nil,nil,nil,nil
     @template = Template.find(params[:id])
     @completion_day = @template.completion_days.order('price ASC')
     @pages = @template.number_of_pages.order('price ASC')
@@ -31,23 +31,6 @@ class TemplatesController < ApplicationController
       format.js { render :text => 'ok' } 
     end
   end
-
-  # def upload
-  #   email = session[:email]
-  #   password_length = 8
-  #   password = Devise.friendly_token.first(password_length)
-  #   if params[:user].present?
-  #     @user = User.new(:email => email, :password => password, :password_confirmation => password,:document=>params[:user][:document])
-  #   else
-  #     @user = User.new(:email => email, :password => password, :password_confirmation => password)
-  #   end
-  #   if @user.save
-  #     flash[:alert] = 'Thanks we will send you resume on your email adrress.'
-  #     redirect_to templates_path
-  #   else
-  #     redirect_to charges_path
-  #   end
-  # end
 
   private 
     def set_price

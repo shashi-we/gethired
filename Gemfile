@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-#gem 'dalli'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -41,20 +41,16 @@ end
 gem 'pg'
 gem 'rails_12factor', group: :production
 
-group :test,:development do
-	gem 'rspec-rails'
-	gem 'debugger'
-end
-
-gem 'twitter'
+gem "devise"
 gem 'rails_admin'
 gem "paperclip", "~> 3.0"
+
+# api gem
+gem 'twitter'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'aws-sdk'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-#gem 'carmen-rails', '~> 1.0.0', github: 'jim/carmen-rails'
 gem 'bitpay-client', :require => 'bitpay'
-
 gem 'gibbon', :git=> 'https://github.com/amro/gibbon.git' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -69,4 +65,17 @@ gem 'gibbon', :git=> 'https://github.com/amro/gibbon.git'
 # gem 'debugger', group: [:development, :test]
 
 
-gem "devise"
+
+
+group :test,:development do
+	gem 'rspec-rails' 
+	gem 'factory_girl_rails'
+	gem 'debugger'
+end
+
+group :test do 
+  gem 'faker' 
+  gem 'capybara' 
+  gem 'guard-rspec' 
+  gem 'launchy' 
+end 
