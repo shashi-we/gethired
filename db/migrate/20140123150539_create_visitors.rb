@@ -1,4 +1,4 @@
-class CreateVisiters < ActiveRecord::Migration
+class CreateVisitors < ActiveRecord::Migration
   def self.up
     create_table :visitors do |t|
       t.string  :email_id
