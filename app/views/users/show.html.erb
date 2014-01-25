@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="12u">
 		<!-- Banner -->
-				<% i = 1 %>
+				<% i = 0 %>
 				<div>
 					<div class="row">
 				<% @orders.each_with_index do |order,index| %>
@@ -10,7 +10,7 @@
 							<section class="box">
            <% if index == i %>
             
-			          <%= i.to_s + " " + "Order Status :" %> <br/>
+			          <%=(i+1).to_s + " " + "Order Status :" %> <br/>
 								  Order Status :<%= order.status%><br/>
 								  Template Total Price : <%= order.total_price%></br>
 								  Template Name : <%= order.template_name%></br>
