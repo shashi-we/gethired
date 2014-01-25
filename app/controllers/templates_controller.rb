@@ -21,7 +21,7 @@ class TemplatesController < ApplicationController
       session[:email] = params[:email]
       set_price
       @template = Template.find(session[:t_id])
-      email_exists = Visiter.find_by(:email_id => session[:email])
+      email_exists = Visitor.find_by(:email_id => session[:email])
       if !email_exists.blank?
         email_exists.destroy
       end
