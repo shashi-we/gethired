@@ -1,5 +1,7 @@
 require 'spec_helper'
-
+require 'factory_girl_rails'
 describe Template do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it "has a valid factory" do 
+  		FactoryGirl.create(:template).should be_valid
+  	end
 end

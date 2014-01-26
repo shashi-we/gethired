@@ -68,14 +68,15 @@ gem 'gibbon', :git=> 'https://github.com/amro/gibbon.git'
 
 
 group :test,:development do
-	gem 'rspec-rails' 
-	gem 'factory_girl_rails'
 	gem 'debugger'
 end
 
-group :test do 
+group :test do
+	gem 'rspec-rails' 
+	gem 'factory_girl_rails' 
   gem 'faker' 
   gem 'capybara' 
   gem 'guard-rspec' 
   gem 'launchy' 
+  gem 'stripe-ruby-mock', '>= 1.8.7.4'
 end 
