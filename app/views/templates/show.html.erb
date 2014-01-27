@@ -43,6 +43,10 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div>price: $<span id='price'><%=@template.price.to_s %></span></div>
+            <%if !@template.offer_discount.blank? %>
+              <div>Offer: <span id='offer'><%=@template.offer_name %></span></div>
+              <div>Offer Discount: $<span id='offer'><%=@template.offer_discount %></span></div>
+            <%end%>
               <%=select_tag 'completion-day', options_for_select(@completion_day.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.price.to_s+'-'+u.id.to_s] })
               %>
               <%=select_tag 'pages', options_for_select(@pages.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.price.to_s+'-'+u.id.to_s] })

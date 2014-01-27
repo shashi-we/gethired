@@ -34,11 +34,17 @@ class TemplatesController < ApplicationController
 
   private 
     def set_price
-      t_price = Template.find(session[:t_id]).price
+      @template = Template.find(session[:t_id])
       d_price = CompletionDay.find(session[:d_id]).price
       p_price = NumberOfPage.find(session[:p_id]).price
       c_price = Color.find(session[:c_id]).price
-      session[:price] = t_price + d_price + p_price + c_price
+      @price = @template.price + d_price + p_price + c_price
+      
+      if !@template.offer_discount.blank?
+        session[:price] = (@price - @template.offer_discount)
+      else
+        session[:price] = @price
+      end
     end
 
 end
