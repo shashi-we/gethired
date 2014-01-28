@@ -12,10 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.bpopup.min.js
 //= require turbolinks
-//= require skel.min
+//= jquery.dropotron.min.js
+//= require skel.min.js
 //= require skel-panels.min.js
-//= require fancybox
-//= require jquery.ui.all
-//= require jquery.modal
+//= require stripe.js
 //= require_tree .
+

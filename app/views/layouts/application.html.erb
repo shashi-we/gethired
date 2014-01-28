@@ -3,11 +3,10 @@
   <head>
     <title>Gethired</title>
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic" rel="stylesheet" />
-  	
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
-    <!--[if lte IE 8]><script src="/assets/html5shiv.js"></script><link rel="stylesheet" href="/assets/ie8.css" /><![endif]-->
+        <!--[if lte IE 8]><script src="/assets/html5shiv.js"></script><link rel="stylesheet" href="/assets/ie8.css" /><![endif]-->
   </head>
   <body class="homepage">
     <%= render 'layouts/header'%>
@@ -16,5 +15,6 @@
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer'%>
+    
   </body>
 </html>

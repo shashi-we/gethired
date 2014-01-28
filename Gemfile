@@ -22,9 +22,6 @@ gem "rack-reverse-proxy", :require => "rack/reverse_proxy"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'fancybox2-rails', '~> 0.2.4'
-gem 'jquery-ui-rails'
-gem 'jquery-modal-rails', :git=>'https://github.com/dei79/jquery-modal-rails.git'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -37,12 +34,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# gem 'jquery-modal-rails'
+
+
 #gem "non-stupid-digest-assets"
 gem 'pg'
 gem 'rails_12factor', group: :production
 
 gem "devise"
-gem 'rails_admin'
+gem "rails_admin", "~> 0.5.0"
 gem "paperclip", "~> 3.0"
 
 # api gem

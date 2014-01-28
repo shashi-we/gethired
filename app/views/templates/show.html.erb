@@ -59,37 +59,35 @@
       <div class="6u">
         <div class="panel panel-default">
           <div class="panel-body">
-            <div id="checkout"style="display: none; ">
-              <p>
-                <span class='error-message'></span>
-                <div>Email Address</div>
-                <%= text_field_tag 'email_address' %>
-                <div>
-                  <%= radio_button_tag(:cc, "bitcoin") %>
-                  <%= label_tag(:cc_bitcoin, "Bitcoin") %><br/>
-                  <%= radio_button_tag(:cc, "card") %>
-                  <%= image_tag('rsz_cardicons.png')%>
-                </div>
-                <div>
-                  <div class="addthis_toolbox addthis_default_style ">
-                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                    <a class="addthis_button_tweet"></a>
+            <%= link_to "Checkout", "#checkout", :class=>"button",:rel=>"modal:open" %>
+              <div id="checkout"style="display: none; ">
+                <p>
+                  <span class='error-message'></span>
+                  <div>Email Address</div>
+                  <%= text_field_tag 'email_address' %>
+                  <div>
+                    <%= radio_button_tag(:cc, "bitcoin") %>
+                    <%= label_tag(:cc_bitcoin, "Bitcoin") %><br/>
+                    <%= radio_button_tag(:cc, "card") %>
+                    <%= image_tag('rsz_cardicons.png')%>
                   </div>
-                </div> 
-                <div>
-                  <%= link_to 'Cancel', nil, :rel => "modal:close" ,:class=>"button" %>
-                  <%= link_to_modal 'Next',new_charge_path,:class=>"button checkout",:id=>"card"%>
-                  <%= link_to_modal 'Next', bitcoin_charges_path,:class=>"button checkout",:id=>'bitcoin'%>
-                </div>
-              </p>
-            </div>
-            <div id="cc-card"style="display: none; ">
-              
-              <%= link_to_modal "back", "#checkout", :class=>"button" %>
-              <%= link_to_modal "next", "#checkout", :class=>"button" %>
-            </div>
-
-            <%= link_to_modal "Checkout", "#checkout", :class=>"button" %>
+                  <div>
+                    <div class="addthis_toolbox addthis_default_style ">
+                      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                      <a class="addthis_button_tweet"></a>
+                    </div>
+                  </div> 
+                  <div>
+                    <%= link_to 'Cancel', nil, :rel => "modal:close" ,:class=>"button" %>
+                    <%= link_to 'Next',new_charge_path,:class=>"button checkout",:id=>"card",:rel=>"modal:open" %>
+                    <%= link_to 'Next', bitcoin_charges_path,:class=>"button checkout",:id=>'bitcoin',:rel=>"modal:open" %>
+                  </div>
+                </p>
+              </div>
+              <!-- <div id="cc-card"style="display: none; ">
+                <%#= link_to "back", "#checkout", :class=>"button" %>
+                <%#= link_to "next", "#checkout", :class=>"button" %>
+              </div> -->
           </div>
         </div>
       </div>

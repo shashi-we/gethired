@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123150539) do
+ActiveRecord::Schema.define(version: 20140126204345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 20140123150539) do
     t.string   "slider4_content_type"
     t.integer  "slider4_file_size"
     t.datetime "slider4_updated_at"
+    t.string   "offer_name"
+    t.integer  "offer_discount"
   end
 
   create_table "users", force: true do |t|
@@ -129,7 +131,7 @@ ActiveRecord::Schema.define(version: 20140123150539) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "visiters", force: true do |t|
+  create_table "visitors", force: true do |t|
     t.string   "email_id"
     t.string   "template_name"
     t.integer  "price"

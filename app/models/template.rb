@@ -3,7 +3,10 @@ class Template < ActiveRecord::Base
   has_many :number_of_pages, :inverse_of=>:template
   has_many :completion_days, :inverse_of=>:template
   has_many :colors , :inverse_of=>:template 
-  #accepts_nested_attributes_for :template_attributes
+
+  validates :completion_days, :length => { :minimum => 1,:message=>'minimum one day required' }
+  validates :number_of_pages, :length => { :minimum => 1,:message=>'minimum one page required' }
+  validates :colors, :length => { :minimum => 1,:message=>'minimum one color required' }
   has_attached_file :main_image,
     # :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
     # :url => "/system/:attachment/:id/:style/:filename"
@@ -14,6 +17,7 @@ class Template < ActiveRecord::Base
     :path => "/templates/:attachment/:id/:style.:extension",
     :s3_credentials =>"#{Rails.root}/config/s3.yml",
     :s3_protocol => 'https'
+  validates_attachment_presence :main_image
   has_attached_file :slider1,
     # :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
     # :url => "/system/:attachment/:id/:style/:filename"
