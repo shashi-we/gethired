@@ -27,6 +27,7 @@ RailsAdmin.config do |config|
   config.model 'NumberOfPage' do
     visible false
   end
+  config.label_methods << :email
 
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
