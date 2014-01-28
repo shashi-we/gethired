@@ -95,23 +95,28 @@
   </div>
 </div>
 <script>
+$(".button").modal({
+  escapeClose: false,
+  clickClose: false,
+  showClose: false
+});
 $("#card").hide();
 $("#bitcoin").hide();
 var sum = parseInt("<%= @template.price %>");
-$("#completion-day").click(function(){
+$("#completion-day").on('change',function(){
   var value = parseInt($( "#completion-day option:selected").val()) + parseInt($( "#pages option:selected").val()) + parseInt($( "#colors option:selected").val());
   var price = value + sum;
   $("#price").html(price);
   $("#selected_value").submit();
 })
-$("#pages").click(function(){
+$("#pages").on('change',function(){
 
   var value = parseInt($( "#completion-day option:selected").val()) + parseInt($( "#pages option:selected").val()) + parseInt($( "#colors option:selected").val());
   var price = value + sum;
   $("#price").html(price);
   $("#selected_value").submit();
 })
-$("#colors").click(function(){
+$("#colors").on('change',function(){
   var value = parseInt($( "#completion-day option:selected").val()) + parseInt($( "#pages option:selected").val()) + parseInt($( "#colors option:selected").val());
   var price = value + sum;
   $("#price").html(price);
