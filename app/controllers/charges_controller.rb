@@ -35,9 +35,10 @@ class ChargesController < ApplicationController
 
 	def bitcoin
 		client = BitPay::Client.new bitcoin_access
-		invoice = client.post 'invoice', {:price => 1, :currency => 'USD',:redirectURL=>'http://gethired.herokuapp.com/orders/uploadresume'}
+		invoice = client.post 'invoice', {:price => 1, :currency => 'USD',:buyerEmail=>session[:email],:redirectURL=>'http://gethired.herokuapp.com/orders/uploadresume'}
 		@url = invoice.find{|key,value| key["url"]}[1]
 		create_user_order
+		render layout: false
 	end
 
 	private
