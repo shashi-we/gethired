@@ -3,7 +3,9 @@ class Template < ActiveRecord::Base
   has_many :number_of_pages, :inverse_of=>:template
   has_many :completion_days, :inverse_of=>:template
   has_many :colors , :inverse_of=>:template 
-
+  accepts_nested_attributes_for :number_of_pages, :allow_destroy => true
+  accepts_nested_attributes_for :completion_days, :allow_destroy => true
+  accepts_nested_attributes_for :colors, :allow_destroy => true
   validates :completion_days, :length => { :minimum => 1,:message=>'minimum one day required' }
   validates :number_of_pages, :length => { :minimum => 1,:message=>'minimum one page required' }
   validates :colors, :length => { :minimum => 1,:message=>'minimum one color required' }
