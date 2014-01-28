@@ -7,11 +7,8 @@ class Order < ActiveRecord::Base
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :s3_protocol => 'https'
   
-  #admin settings
-
- 	# def roles_enum
-    
- 	# end
+  attr_accessor :delete_document
+  before_validation { self.document.clear if self.delete_document == '1' } 
 
   rails_admin do
     edit do
@@ -42,10 +39,15 @@ class Order < ActiveRecord::Base
       field :user_id do 
       
       end
+
       field :status,:enum do 
         enum do
 			    [ [ 'Processing', 'Processing' ], [ 'Designing', 'Designing' ], [ 'Revisions', 'Revisions' ], [ 'Completed', 'Completed' ]]
 			  end
+      end
+
+      field :document do 
+      
       end
     end
   end

@@ -1,16 +1,7 @@
 
 <%= form_tag charges_path ,:id=>"payment-form" do %>
   <span class="payment-errors"></span>
-  
-  <div class="form-row">
-    <label>
-      <span>Email Address</span>
-      <%= text_field_tag 'email',session[:email]%>
-     <!--  <input type="text" size="20" data-stripe="number"/> -->
-    </label>
-  </div>
-
-  
+    
   <div class="form-row">
     <label>
       <span>Card Number</span>

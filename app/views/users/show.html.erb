@@ -12,6 +12,12 @@
             
 			          <%=(i+1).to_s + " " + "Order Status :" %> <br/>
 								  Order Status :<%= order.status%><br/>
+								  <% if !order.document.blank? %>
+								  	Uploaded Resume :<%= link_to "Download",order.document.url %></br>
+								  <%else%>
+								  	No Resume : <%= link_to 'Upload Your Resume',uploadresume_orders_path(:order_id=>order.id)%></br>
+								  <%end%>
+								   
 								  Template Total Price : <%= order.total_price%></br>
 								  Template Name : <%= order.template_name%></br>
 								  Template price : <%= order.template_price%></br>

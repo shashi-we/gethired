@@ -29,7 +29,8 @@ class ChargesController < ApplicationController
 
 	  # #    flash[:alert] = e.message
 	  create_user_order
-		redirect_to uploadresume_orders_path
+	  flash[:notice] = 'Thanks! Now you can upload your resume.'
+	  redirect_to uploadresume_orders_path
 	end
 
 

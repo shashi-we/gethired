@@ -1,11 +1,18 @@
 class Template < ActiveRecord::Base
   validates :name,:price, presence: true
-  has_many :number_of_pages, :inverse_of=>:template
-  has_many :completion_days, :inverse_of=>:template
-  has_many :colors , :inverse_of=>:template 
-  accepts_nested_attributes_for :number_of_pages, :allow_destroy => true
-  accepts_nested_attributes_for :completion_days, :allow_destroy => true
+  # has_many :number_of_pages, :inverse_of=>:template
+  # has_many :completion_days, :inverse_of=>:template
+  # has_many :colors , :inverse_of=>:template 
+  has_many :colors, :dependent => :destroy, :inverse_of => :template
   accepts_nested_attributes_for :colors, :allow_destroy => true
+  has_many :completion_days, :dependent => :destroy, :inverse_of => :template
+  accepts_nested_attributes_for :completion_days, :allow_destroy => true
+  has_many :number_of_pages, :dependent => :destroy, :inverse_of => :template
+  accepts_nested_attributes_for :number_of_pages, :allow_destroy => true
+  
+  # accepts_nested_attributes_for :number_of_pages, :allow_destroy => true
+  # accepts_nested_attributes_for :completion_days, :allow_destroy => true
+  # accepts_nested_attributes_for :colors, :allow_destroy => true
   validates :completion_days, :length => { :minimum => 1,:message=>'minimum one day required' }
   validates :number_of_pages, :length => { :minimum => 1,:message=>'minimum one page required' }
   validates :colors, :length => { :minimum => 1,:message=>'minimum one color required' }
@@ -54,4 +61,6 @@ class Template < ActiveRecord::Base
     :path => "/templates/:attachment/:id/:style.:extension",
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :s3_protocol => 'https'
+
+ 
 end
