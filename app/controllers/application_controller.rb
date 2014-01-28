@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
 	  # config.access_token = '2291256133-VgHVTiC6pQHBVOoeY3Cgtoz98Qj9pGDYklD8AOA'
 	  # config.access_token_secret = 'i51w0Jfztkg8ObuoBHHbR6goOePfEIUuTT3P1HZIHqAr1'
 	  # staging
-	  config.consumer_key = '4AS9ZwR0Dacf6ArJKLsQ'
-	  config.consumer_secret = 'KnjW3Ltrhw4UQXZ7hmHDBDl4QOxFZnLlfeV9KbQ3fo'
+	  config.consumer_key = 'L60LTWBBivxpDhWzFvQO7A'
+	  config.consumer_secret = 'TAJg72HXrIgdsuUFVCfpdF67nEprF6jP92Gbbv0jzdo'
 	  config.access_token = '2291256133-BLTkKSWlXJUEqY5Wy0Degh5cIOblvRdCFOvO4ES'
 	  config.access_token_secret = '0mk3FDRHENwj2wM7fBfNW8zIlZzow3z2XYGVyqPMBHB8p'
 	  end
