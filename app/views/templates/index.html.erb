@@ -17,12 +17,12 @@
 									<div class="4u">
 										<section class="box">
 											<a href="<%=template_path(template)%>" class="image image-full">
-												<%= image_tag template.main_image(:medium),:width=>'373',:height=>'232'%>
+												<%= image_tag template.main_image.url(:medium),:width=>'373',:height=>'232'%>
 												<!-- <img src="/assets/pic02.jpg" alt="" /> --></a>
 											<header>
 												<h3><%= template.name %></h3>
 											</header>
-											<p><%=template.short_description%></p>
+											<p id='description'><%=template.short_description%></p>
 											<p>
 												<%='$' +''+ template.price.to_s %>
 												<div class="addthis_toolbox addthis_default_style ">
@@ -42,3 +42,11 @@
 		</div>
 	</div>
 </div>
+
+<style>
+#description{
+	display:block;
+  width:343px;
+  height:75px;
+}
+</style>
