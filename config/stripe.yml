@@ -1,6 +1,6 @@
 development:
-  api_key: sk_test_cMMyhLWIJSZs835SbPkd39y6
-  public_key: pk_test_UHCTGJrledTZplEBOojNgJtc
+  api_key: sk_test_pZIHxjQmy5R9wIWGfQ9ZUPlz
+  public_key: pk_test_PS9IErgRYwAuQjLproyTHGRT
 production:
-  api_key: sk_test_cMMyhLWIJSZs835SbPkd39y6
-  public_key: pk_test_UHCTGJrledTZplEBOojNgJtc
+  api_key: sk_live_ab25dKtcZ1bbI2APBRnruBeJ
+  public_key: pk_live_ZsiJMUOX4nTQcgOfLy1LhB6E
