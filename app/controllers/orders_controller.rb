@@ -4,8 +4,12 @@ class OrdersController < ApplicationController
 
   def uploadresume
     if session[:order_id].present?
-      @order = Order.find(session[:order_id])
-    else
+      if session[:digital_download].present?
+        redirect_to digital_download_orders_path
+      else 
+        @order = Order.find(session[:order_id])
+      end
+    else 
       @order = Order.find(params[:order_id].to_i)
     end
   end
@@ -18,6 +22,10 @@ class OrdersController < ApplicationController
   	else
   		render 'uploadresume'
   	end
+  end
+
+  def digital_download
+    @template = Template.find(session[:t_id])
   end
 
   

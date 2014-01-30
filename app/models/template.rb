@@ -61,6 +61,13 @@ class Template < ActiveRecord::Base
     :path => "/templates/:attachment/:id/:style.:extension",
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :s3_protocol => 'https'
-
+  has_attached_file :digital_download,
+    :content_type=>['application/zip', 'application/x-zip-compressed'],
+    :storage => :s3, 
+    :bucket => 'gethired.io',
+    :default_url   => "/images/thumb/missing.png",
+    :path => "/templates/:attachment/:id/:style.:extension",
+    :s3_credentials => "#{Rails.root}/config/s3.yml",
+    :s3_protocol => 'https'
  
 end

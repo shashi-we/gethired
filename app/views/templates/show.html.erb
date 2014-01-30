@@ -42,17 +42,22 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
-            <div>price: $<span id='price'><%=@template.price.to_s %></span></div>
-            <%if !@template.offer_discount.blank? %>
-              <div>Offer: <span id='offer'><%=@template.offer_name %></span></div>
-              <div>Offer Discount: $<span id='offer'><%=@template.offer_discount %></span></div>
-            <%end%>
+            
+              <div>price: $<span id='price'><%=@template.price.to_s %></span>
+              </div>
+              <%= check_box_tag 'digital' %>Digital Download<br/>
+           
+              <%if !@template.offer_discount.blank? %>
+                <div>Offer: <span id='offer'><%=@template.offer_name %></span></div>
+                <div>Offer Discount: $<span id='offer'><%=@template.offer_discount %></span></div>
+              <%end%>
+           
               <%=select_tag 'completion-day', options_for_select(@completion_day.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.price.to_s+'-'+u.id.to_s] })
               %>
               <%=select_tag 'pages', options_for_select(@pages.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.price.to_s+'-'+u.id.to_s] })
               %>
               <%=select_tag 'colors', options_for_select(@colors.collect{ |u| [(u.title+' ($'+u.price.to_s + ')'), u.price.to_s+'-'+u.id.to_s] })
-              %>
+              %>     
           </div>
         </div>
       </div>
@@ -67,7 +72,7 @@
                   <%= text_field_tag 'email_address' %>
                   <div>
                     <%= radio_button_tag(:cc, "bitcoin") %>
-                    <%= label_tag(:cc_bitcoin, "Bitcoin") %><br/>
+                    <%= image_tag('bitcoin.jpg',:size=>'90x24')%><br/>
                     <%= radio_button_tag(:cc, "card") %>
                     <%= image_tag('rsz_cardicons.png')%>
                   </div>
@@ -95,20 +100,36 @@
   </div>
 </div>
 <script>
-$(".button").modal({
-  escapeClose: false,
-  clickClose: false,
-  showClose: false
-});
+var sum = parseInt("<%= @template.price %>");
+var dgPrice = parseInt('<%= @template.digital_price %>');
+var dgDownload;
 $("#card").hide();
 $("#bitcoin").hide();
-var sum = parseInt("<%= @template.price %>");
+$("#digital").on('click',function(){
+  if($("#digital").is(":checked"))
+  {
+    dgDownload = "true"
+    $("#price").html(dgPrice);
+    $("#completion-day").prop('disabled', 'disabled');
+    $("#pages").prop('disabled', 'disabled');
+    $("#colors").prop('disabled', 'disabled');
+  }
+  else
+  {
+    dgDownload = "false"
+    $("#price").html(sum);
+    $("#completion-day").removeAttr('disabled');
+    $("#pages").removeAttr('disabled');
+    $("#colors").removeAttr('disabled');
+  }
+});
+
 $("#completion-day").on('change',function(){
   var value = parseInt($( "#completion-day option:selected").val()) + parseInt($( "#pages option:selected").val()) + parseInt($( "#colors option:selected").val());
   var price = value + sum;
   $("#price").html(price);
   $("#selected_value").submit();
-})
+});
 $("#pages").on('change',function(){
 
   var value = parseInt($( "#completion-day option:selected").val()) + parseInt($( "#pages option:selected").val()) + parseInt($( "#colors option:selected").val());
@@ -148,7 +169,7 @@ $(".checkout").click(function(){
     $.ajax({
       url: "<%=set_session_templates_path%>",
       type: 'get',
-      data:{completion_id:completion , page_id: page , color_id: color, template_id : template ,email: email_address},
+      data:{completion_id:completion , page_id: page , color_id: color, template_id : template ,email: email_address,dg_value: dgDownload},
       beforeSend: function(xhr) {
       xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
       }

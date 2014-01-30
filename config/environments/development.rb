@@ -31,3 +31,5 @@ Gethired::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.assets.debug = true
 end
+
+BITPAY_KEY = 'Liq5X9eLZP17xr9uBjNnex7w4MfEPeF2ESuoTmJjrw'

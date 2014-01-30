@@ -77,6 +77,8 @@ Gethired::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  config.action_mailer.default_url_options = { :host => 'gethired.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'gethired-io.heroku.com' }
   
 end
+
+BITPAY_KEY = 'Liq5X9eLZP17xr9uBjNnex7w4MfEPeF2ESuoTmJjrw'

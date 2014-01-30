@@ -34,7 +34,8 @@
 
 <script type="text/javascript">
   // This identifies your website in the createToken call below
-  Stripe.setPublishableKey('pk_test_UHCTGJrledTZplEBOojNgJtc');
+  var pk = '<%= STRIPE_PUBLIC_KEY %>'
+  Stripe.setPublishableKey(pk);
   // ...
   jQuery(function($) {
     $('#payment-form').submit(function(event){

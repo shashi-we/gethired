@@ -13,6 +13,7 @@ Gethired::Application.routes.draw do
   resources :orders do 
     collection do
       get 'uploadresume'
+      get 'digital_download'
     end
   end
   resources :templates do 

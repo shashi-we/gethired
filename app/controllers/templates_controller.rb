@@ -4,7 +4,7 @@ class TemplatesController < ApplicationController
   end
 
   def show
-    session[:email],session[:t_id],session[:d_id],session[:p_id],session[:c_id] = nil,nil,nil,nil
+    resetsession
     @template = Template.find(params[:id])
     @completion_day = @template.completion_days.order('price ASC')
     @pages = @template.number_of_pages.order('price ASC')
@@ -12,14 +12,20 @@ class TemplatesController < ApplicationController
   end
 
   def set_session
-    session[:email],session[:t_id],session[:d_id],session[:p_id],session[:c_id] = nil,nil,nil,nil
+    resetsession
     if !params[:completion_id].blank? && !params[:page_id].blank? && !params[:color_id].blank? && !params[:template_id].blank?
       session[:d_id] = params[:completion_id].gsub(/(\d+)\W/, '').to_i 
       session[:p_id] = params[:page_id].gsub(/(\d+)\W/, '').to_i 
       session[:c_id] = params[:color_id].gsub(/(\d+)\W/, '').to_i
       session[:t_id] = params[:template_id].to_i
       session[:email] = params[:email]
-      set_price
+      if params[:dg_value] == "true"
+        @template = Template.find(session[:t_id])
+        session[:price] = @template.digital_price
+        session[:digital_download] = 'Digital Download'
+      else
+        set_price
+      end
       @template = Template.find(session[:t_id])
       email_exists = Visitor.find_by(:email_id => session[:email])
       if !email_exists.blank?
@@ -45,6 +51,10 @@ class TemplatesController < ApplicationController
       else
         session[:price] = @price
       end
+    end
+
+    def resetsession
+      session[:email],session[:t_id],session[:d_id],session[:p_id],session[:c_id],session[:digital_download], session[:price]  = nil,nil,nil,nil,nil,nil
     end
 
 end

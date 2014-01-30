@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
 	    :currency    => 'usd'
 	  )
  
-		# rescue Stripe::CardError => e
+	# rescue Stripe::CardError => e
    	#  respond_to do |format|
    	#    format.js { render :res => 'ok' }
    	#  end
@@ -35,7 +35,7 @@ class ChargesController < ApplicationController
 
 
 	def bitcoin
-		client = BitPay::Client.new bitcoin_access
+		client = BitPay::Client.new BITPAY_KEY
 		invoice = client.post 'invoice', {:price => 1, :currency => 'USD',:buyerEmail=>session[:email],:redirectURL=>'http://gethired.herokuapp.com/orders/uploadresume'}
 		@url = invoice.find{|key,value| key["url"]}[1]
 		create_user_order
@@ -65,23 +65,24 @@ class ChargesController < ApplicationController
       completion_day  = CompletionDay.find(session[:d_id])
       page = NumberOfPage.find(session[:p_id])
       color = Color.find(session[:c_id])
-      @order = @user.orders.create!(:template_name=>template.name,
-		      	                :template_price=>template.price,
-											      :complete_day =>completion_day.title,
-											      :complete_day_price=>completion_day.price,
-											      :number_of_page => page.title,
-											      :page_price=>page.price,
-											      :color=>color.title,
-											      :color_price=>color.price,
-											      :status=>'Processing',
-											      :total_price=>session[:price])
-      session[:order_id] = @order.id
-      ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price],password)
+      if session[:digital_download]
+      	@order = @user.orders.create!(:template_name=>template.name,
+		      	                :template_price=>template.price)
+      	ApplicationHelper::EmailCampaignApi.add_email_mailchip_digital(email,password,template.name,template.digital_price)
+        session[:order_id] = @order.id
+      else
+	      @order = @user.orders.create!(:template_name=>template.name,
+			      	                :template_price=>template.price,
+												      :complete_day =>completion_day.title,
+												      :complete_day_price=>completion_day.price,
+												      :number_of_page => page.title,
+												      :page_price=>page.price,
+												      :color=>color.title,
+												      :color_price=>color.price,
+												      :status=>'Processing',
+												      :total_price=>session[:price])
+	      session[:order_id] = @order.id
+	      ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price],password)
+	    end
 	  end
-
-
-	  def bitcoin_access
-	  	access_key = Setting.where(:account_type=>'bitcoin').first.access_key
-	  	return access_key
-	  end 
 end
