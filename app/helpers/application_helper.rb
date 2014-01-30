@@ -6,5 +6,11 @@ module ApplicationHelper
 		  
 		  Rails.logger.error("Error from MailChimp: #{result['error']}") if result["status"] == "error"
 		end
+		def self.add_email_mailchip_digital(email,password,tn,td_price)
+		  gb = Gibbon::API.new
+		  result = gb.lists.subscribe({:id => '77dc70cd32', :email => {:email => email},:merge_vars => {:TNAME => tn, :TPRICE => td_price, :PASSWORD=>password}, :double_optin => false})
+		  
+		  Rails.logger.error("Error from MailChimp: #{result['error']}") if result["status"] == "error"
+		end
 	end
 end
