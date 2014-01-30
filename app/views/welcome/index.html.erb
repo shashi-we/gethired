@@ -77,12 +77,12 @@
 											<div class="4u">
 												<section class="box">
 													<a href="http://facebook.com/DreametryDoodle" class="image image-full">
-														<%= image_tag @resume_template.main_image.url(:medium),:width=>'373',:height=>'260'%>
+														<%= image_tag @resume_template.main_image.url(:medium),:width=>'373',:height=>'260' if !@resume_template.blank? %>
 														<!-- <img src="/assets/pic02.jpg" alt="" /> --></a>
 													<header>
 														<h3>Resume Templates</h3>
 													</header>
-													<p id='description'><%=@resume_template.short_description%></p>
+													<p id='description'><%=@resume_template.short_description if !@resume_template.blank?%></p>
 													<footer>
 														<a href="/templates" class="button alt">Find out more</a>
 													</footer>
@@ -91,12 +91,12 @@
 											<div class="4u">
 												<section class="box">
 													<a href="http://facebook.com/DreametryDoodle" class="image image-full">
-														<%= image_tag @best_template.main_image.url(:medium),:width=>'373',:height=>'260'%>
+														<%= image_tag @best_template.main_image.url(:medium),:width=>'373',:height=>'260' if !@resume_template.blank?%>
 														<!-- <img src="/assets/pic03.jpg" alt="" /> --></a>
 													<header>
 														<h3>Best Sellers</h3>
 													</header>
-													<p id='description'><%=@best_template.short_description%></p>
+													<p id='description'><%=@best_template.short_description if !@resume_template.blank?%></p>
 													<footer>
 														<a href="/templates?type=bs" class="button alt">Find out more</a>
 													</footer>
