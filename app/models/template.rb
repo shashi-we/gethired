@@ -1,4 +1,6 @@
 class Template < ActiveRecord::Base
+  # attr_accessible :tag_list
+  acts_as_taggable
   validates :name,:price, presence: true
   # has_many :number_of_pages, :inverse_of=>:template
   # has_many :completion_days, :inverse_of=>:template

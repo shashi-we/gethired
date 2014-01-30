@@ -24,11 +24,13 @@
 											</header>
 											<p id='description'><%=template.short_description%></p>
 											<p>
-												<%='$' +''+ template.price.to_s %>
+												<%='$' +''+ template.price.to_s %></p>
+												<p>Tags: <%=  raw template.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+												<p>
 												<div class="addthis_toolbox addthis_default_style ">
 													<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
 												</div> 
-											</p>
+											  </p>
 										</section>
 									</div>
 								<%end%>	
@@ -43,10 +45,3 @@
 	</div>
 </div>
 
-<style>
-#description{
-	display:block;
-  width:343px;
-  height:75px;
-}
-</style>

@@ -1,6 +1,12 @@
 class TemplatesController < ApplicationController
   def index
-  	@templates = Template.all.to_a
+    if params[:tag]
+      @templates = Template.tagged_with(params[:tag])
+    elsif params[:type] == 'bs'
+      @templates = Template.last(6).reverse
+    else
+      @templates = Template.all.to_a
+    end
   end
 
   def show
