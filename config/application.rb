@@ -20,6 +20,7 @@ module Gethired
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.assets.initialize_on_precompile = false
+    config.middleware.use Rack::SslEnforcer, :only_hosts => 'gethired-io.herokuapp.com' if Rails.env.development?
     config.middleware.use Rack::Superfeedr, { :host => 'http://gethired-io.herokuapp.com', :login => '', :password => ''} do |superfeedr|
       Superfeedr = superfeedr
     end
