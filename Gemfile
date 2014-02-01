@@ -56,7 +56,6 @@ gem 'gibbon', :git=> 'https://github.com/amro/gibbon.git'
 gem 'rack-superfeedr'
 gem 'acts-as-taggable-on'
 gem 'rails_admin_tag_list'
-gem "rack-ssl-enforcer", "~> 0.2.5"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
