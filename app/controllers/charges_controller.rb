@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-
+    force_ssl 
 	layout 'charges'
   
 	def new
@@ -46,28 +46,18 @@ class ChargesController < ApplicationController
 	  def create_user_order
 	  	# create user
 	  	email = session[:email]
-	    password_length = 8
-	    password = Devise.friendly_token.first(password_length)
+	    password = ApplicationHelper::MethodHelper.generate
+	    @user = User.create_user(email,password)
+	    # check visitor if exist than delete recored
+	    Visitor.check_visitore_email(email)
 	    
-	    email_exists_visitor = Visitor.find_by(:email_id => email)
-	    if !email_exists_visitor.blank?
-	    	email_exists_visitor.destroy
-	    end
-	    email_exists = User.find_by(:email => email)
-	    if !email_exists.blank?
-	      @user = email_exists
-	    else
-	      @user = User.create!(:email => email, :password => password, :password_confirmation => password)
-	    end
-	    # create order 
 	    template = Template.find(session[:t_id])
       completion_day  = CompletionDay.find(session[:d_id])
       page = NumberOfPage.find(session[:p_id])
       color = Color.find(session[:c_id])
       if session[:digital_download]
-      	@order = @user.orders.create!(:template_name=>template.name,
-		      	                :template_price=>template.price)
-      	ApplicationHelper::EmailCampaignApi.add_email_mailchip_digital(email,password,template.name,template.digital_price)
+      	@order = @user.orders.create!(:template_name=>template.name,:template_price=>template.price)
+      	ApplicationHelper::MethodHelper.add_email_mailchip_digital(email,password,template.name,template.digital_price)
         session[:order_id] = @order.id
       else
 	      @order = @user.orders.create!(:template_name=>template.name,
@@ -81,7 +71,7 @@ class ChargesController < ApplicationController
 												      :status=>'Processing',
 												      :total_price=>session[:price])
 	      session[:order_id] = @order.id
-	      ApplicationHelper::EmailCampaignApi.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price],password)
+	      ApplicationHelper::MethodHelper.add_email_mailchip(email,template.name,template.price,completion_day.title,completion_day.price,page.title,page.price,color.title,color.price,session[:price],password)
 	    end
 	  end
 end
